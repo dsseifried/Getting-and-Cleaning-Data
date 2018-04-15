@@ -1,0 +1,2 @@
+library(dataMaid)
+makeCodebook(dataset)
