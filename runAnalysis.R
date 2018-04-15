@@ -17,9 +17,11 @@ if (!file.exists('FUCI HAR Dataset.zip')) {
 }
 unzip('FUCI HAR Dataset.zip',exdir = './Class3Week4')
 
+#for my sanity to understand each file
+
 #x=measures
-#y=activitys
-#sub=subject or test subject
+#y=activity id
+#subject=test subjectid of who is being evaluated
 
 # set activity labels and change 2nd col from factor to characters
 actlabels<-read.table('./Class3Week4/UCI HAR Dataset/activity_labels.txt')
@@ -30,24 +32,40 @@ tempfeat <-read.table('./Class3Week4/UCI HAR Dataset/features.txt')
 tempfeat[,2]<-as.character(tempfeat[,2])
 reqfeatures <- subset(tempfeat, grepl(".*mean.*|.*std.*", tempfeat$V2))
 
-#Load Train hint use cbind
+#Load (Train) - hint forum (thoughtfulbloke)- use cbind  
 xtrain <- read.table('./Class3Week4/UCI HAR Dataset/train/x_train.txt')[reqfeatures$V1]
 ytrain <- read.table('./Class3Week4/UCI HAR Dataset/train/y_train.txt')
 subtrain <- read.table('./Class3Week4/UCI HAR Dataset/train/subject_train.txt')
 newtrain<-cbind(subtrain,ytrain,xtrain)
 
-#Load Test hint use cbind
+#Change/Simplify Column Names (Train)
+colnames(newtrain)<-c("Subject","Activity",reqfeatures$V2)
+colnames(newtrain)<-gsub("-mean", "Mean", colnames(newtrain))
+colnames(newtrain)<-gsub("-std", "Std", colnames(newtrain))
+colnames(newtrain)<-gsub("()-", "", colnames(newtrain))
+colnames(newtrain)<-gsub("[()]", "", colnames(newtrain))
+
+#Load (Test) - hint forum (thoughtfulbloke)- use cbind 
 xtest <- read.table('./Class3Week4/UCI HAR Dataset/test/x_test.txt')[reqfeatures$V1]
 ytest <- read.table('./Class3Week4/UCI HAR Dataset/test/y_test.txt')
 subtest <- read.table('./Class3Week4/UCI HAR Dataset/test/subject_test.txt')
 newtest<-cbind(subtest,ytest,xtest)
 
-#Merge Test and Train , hints use rbind 
+#Change/Simplify Column Names (Test)
+colnames(newtest)<-c("Subject","Activity",reqfeatures$V2)
+colnames(newtest)<-gsub("-mean", "Mean", colnames(newtest))
+colnames(newtest)<-gsub("-std", "Std", colnames(newtest))
+colnames(newtest)<-gsub("()-", "", colnames(newtest))
+colnames(newtest)<-gsub("[()]", "", colnames(newtest))
 
-To Do
+#Merge Test and Train , hints use rbind
+fulldata <- rbind(newtrain,newtest)
 
-Change ColNames in combined datasets
-Sub activityvalues in column to
-Merge test and train
+#update activities to be descriptive in full dataset 
+fulldata$Activity <- actlabels$V2[match(fulldata$Activity, actlabels$V1)]
+#table(fulldata$Activity)
+
+
+
 
 
