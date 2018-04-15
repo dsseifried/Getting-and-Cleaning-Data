@@ -17,6 +17,10 @@ if (!file.exists('FUCI HAR Dataset.zip')) {
 }
 unzip('FUCI HAR Dataset.zip',exdir = './Class3Week4')
 
+#x=measures
+#y=activitys
+#sub=subject or test subject
+
 # set activity labels and change 2nd col from factor to characters
 actlabels<-read.table('./Class3Week4/UCI HAR Dataset/activity_labels.txt')
 actlabels[,2] <- as.character(actlabels[,2])
@@ -39,5 +43,11 @@ subtest <- read.table('./Class3Week4/UCI HAR Dataset/test/subject_test.txt')
 newtest<-cbind(subtest,ytest,xtest)
 
 #Merge Test and Train , hints use rbind 
+
+To Do
+
+Change ColNames in combined datasets
+Sub activityvalues in column to
+Merge test and train
 
 
