@@ -12,17 +12,17 @@ the script will find the average of only those columns that contain **'mean'** a
 
 ## Test and Train each contain 3 files
 
-###### x file = measures
-###### y file = activity id
-###### subject file  = test subject id of who is being evaluated
+x file = measures\
+y file = activity id\
+subject file  = test subject id of who is being evaluated\
 
 # The Dataset
 ## Human Activity Recognition Using Smartphones Data Set 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 # Libraries
-###### dplyr
-###### reshape2
+dplyr\
+reshape2\
 
 # Steps within the R Script
 
@@ -38,7 +38,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 
 # Output Dataset
-###### tidydataset.txt
+tidydataset.txt\
 
 # Authors
 Don Seifried
