@@ -1,4 +1,6 @@
 # Load packages and Libraries
+install.packages("rmarkdown", repos="https://cloud.r-project.org")
+install.packages("dataMaid", repos="https://cloud.r-project.org")
 
 #used to reshape data
 install.packages('dplyr', dependencies = TRUE)
