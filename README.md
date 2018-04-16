@@ -22,7 +22,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 # Libraries
 dplyr\
-reshape2\
+reshape2
 
 # Steps within the R Script
 
@@ -38,7 +38,7 @@ reshape2\
 
 
 # Output Dataset
-tidydataset.txt\
+tidydataset.txt
 
 # Authors
 Don Seifried
