@@ -1,6 +1,4 @@
 # Load packages and Libraries
-install.packages("rmarkdown", repos="https://cloud.r-project.org")
-install.packages("dataMaid", repos="https://cloud.r-project.org")
 
 #used to reshape data
 install.packages('dplyr', dependencies = TRUE)
@@ -28,7 +26,7 @@ actlabels[,2] <- as.character(actlabels[,2])
 tempfeat <-read.table('./Class3Week4/UCI HAR Dataset/features.txt')
 tempfeat[,2]<-as.character(tempfeat[,2])
 
-#select any columns with the term 'mean' or 'std' in the name STEP 2
+#select any columns with the term 'mean' or 'std' in the name 
 reqfeatures <- subset(tempfeat, grepl(".*mean.*|.*std.*", tempfeat$V2))
 
 #Load (Train) - hint forum (thoughtfulbloke)- use cbind  
@@ -43,20 +41,20 @@ ytest <- read.table('./Class3Week4/UCI HAR Dataset/test/y_test.txt')
 subtest <- read.table('./Class3Week4/UCI HAR Dataset/test/subject_test.txt')
 newtest<-cbind(subtest,ytest,xtest)
 
-#Merge Test and Train , hints use rbind STEP 1
+#Merge Test and Train , hints use rbind 
 fulldata <- rbind(newtrain,newtest)
 
-#update activities to be descriptive in full dataset STEP 3
+#update activities to be descriptive in full dataset 
 fulldata$Activity <- actlabels$V2[match(fulldata$Activity, actlabels$V1)]
 
-#Change/Simplify Column Names (fulldata) STEP 4
+#Change/Simplify Column Names (fulldata) 
 colnames(fulldata)<-c("Subject","Activity",reqfeatures$V2)
 colnames(fulldata)<-gsub("-mean", "Mean", colnames(fulldata))
 colnames(fulldata)<-gsub("-std", "Std", colnames(fulldata))
 colnames(fulldata)<-gsub("()-", "", colnames(fulldata))
 colnames(fulldata)<-gsub("[()]", "", colnames(fulldata))
 
-#STEP 5
+#Find Average
 tidydataset <- 
       fulldata %>%
       group_by(Activity,Subject) %>%

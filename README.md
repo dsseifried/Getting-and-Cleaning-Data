@@ -1,40 +1,46 @@
 # Getting and Cleaning Data
+The goal of this project is to create a tidy dataset from both test and train data containing "wearable data".  Once combined into one dataset,
+the script will find the average of only those columns that contain **'mean'** and **'standard deviation'** data.
 
-## Project Title
-One Paragraph of project description goes here
+## Defined Requirements
 
-## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+1) Merges the training and the test sets to create one data set.
+2) Extracts only the measurements on the mean and standard deviation for each measurement.
+3) Uses descriptive activity names to name the activities in the data set
+4) Appropriately labels the data set with descriptive variable names.
+5) From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-## Prerequisites
-What things you need to install the software and how to install them
+## Test and Train each contain 3 files
 
-## Examples
+x file = measures
+y file = activity id
+subject file  = test subject id of who is being evaluated
 
-Installing
-A step by step series of examples that tell you have to get a development env running
+# The Dataset
+## Human Activity Recognition Using Smartphones Data Set 
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-## Steps
-Say what the step will be
+# Libraries
+dplyr
+reshape2
 
-###  TEST
+# Steps within the R Scripts
 
-Running the tests
-Explain how to run the automated tests for this system
-
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
+1) Download and unzip the data
+2) Load activity labels
+3) Determine only mean and standard deviation column data
+4) Test Data - Load and combine 3 files into 1 for only columns that meet the requirement
+5) Train Data -  Load and combine 3 files into 1 for only columns that meet the requirement
+6) Combine 2 sets of data into 1 dataset
+7) Update activity labels to be descriptive
+8) Update columns(variables) to be descriptive
+9) Find the average of all non-grouped columns
 
 
-Authors
+# Output
+Create the dataset (tidydataset.txt)
+
+# Authors
 Don Seifried
 
-Acknowledgments
+
